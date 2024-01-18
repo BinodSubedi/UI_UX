@@ -35,7 +35,7 @@ class _LoginGeneralState extends State<LoginGeneral> {
       decoration: const InputDecoration(
         hintText: 'Username',
         contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-        suffix: Icon(Icons.phone),
+        suffix: Icon(Icons.badge),
       ),
       keyboardType: TextInputType.text,
       maxLength: 10,

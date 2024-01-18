@@ -11,7 +11,7 @@ abstract class LoginRemoteSource {
 }
 
 class LoginRemoteSourceImpl implements LoginRemoteSource {
-  final String ipAdd = dotenv.env['IP_URL'] ?? 'http://192.168.101.7:3000';
+  final String ipAdd = dotenv.env['IP_URL'] ?? 'http://192.168.101.3:3000';
 
   @override
   Future<Either<Failure, User>> login(String username, String password) async {

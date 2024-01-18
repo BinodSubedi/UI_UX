@@ -72,12 +72,14 @@ class _MessagePageState extends State<MessagePage> {
                 if (state.currentInteractingFriend!.conversation != null) {
                   return Expanded(
                     child: ListView.builder(
+                        reverse: true,
                         controller: scroller,
                         itemCount: state.currentInteractingFriend!.conversation!
                             .messages!.length,
                         itemBuilder: (context, index) {
                           List<String> items = state.currentInteractingFriend!
-                              .conversation!.messages![index]
+                              .conversation!.messages!.reversed
+                              .toList()[index]
                               .split('-');
 
                           bool me =
@@ -144,7 +146,7 @@ class _MessagePageState extends State<MessagePage> {
                       // scroller.animateTo(scroller.position.maxScrollExtent,
                       //     duration: const Duration(milliseconds: 600),
                       //     curve: Curves.linear);
-                      scroller.jumpTo(scroller.position.maxScrollExtent);
+                      //scroller.jumpTo(scroller.position.maxScrollExtent);
                     }
                   },
                 )),
