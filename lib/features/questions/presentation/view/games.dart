@@ -10,6 +10,7 @@ class Games extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffDDF5EB),
       body: SafeArea(
           child:
               BlocBuilder<MainBloc, MainState>(buildWhen: (previous, current) {
@@ -22,18 +23,24 @@ class Games extends StatelessWidget {
                   children: [
                     ...state.games!
                         .map((e) => ElevatedButton(
-                              child: Text(e),
-                              onPressed: () {
-                                context.read<MainBloc>().add(SetGame(game: e));
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xff57CC99)),
+                            onPressed: () {
+                              context.read<MainBloc>().add(SetGame(game: e));
 
-                                context
-                                    .read<MainBloc>()
-                                    .add(GetGameQuestions(game: e));
+                              context
+                                  .read<MainBloc>()
+                                  .add(GetGameQuestions(game: e));
 
-                                Navigator.pushReplacementNamed(
-                                    context, '/gameQuestions');
-                              },
-                            ))
+                              Navigator.pushReplacementNamed(
+                                  context, '/gameQuestions');
+                            },
+                            child: Text(e,
+                                style: const TextStyle(
+                                    color: Color(0xff994900),
+                                    letterSpacing: 3,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16))))
                         .toList()
                   ],
                 ),

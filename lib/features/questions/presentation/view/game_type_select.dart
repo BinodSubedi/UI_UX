@@ -9,42 +9,62 @@ class GameTypeSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xffDDF5EB),
         body: SafeArea(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () {
-                context
-                    .read<MainBloc>()
-                    .add(GetGamesByType(type: 'Online-FPS'));
-                context.read<MainBloc>().add(SetGameType(type: 'Online-FPS'));
-                Navigator.pushReplacementNamed(context, '/gameSelect');
-              },
-              child: const Text(
-                'Online-FPS',
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                context
-                    .read<MainBloc>()
-                    .add(GetGamesByType(type: 'Offline-FPS'));
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    context
+                        .read<MainBloc>()
+                        .add(GetGamesByType(type: 'Online-FPS'));
+                    context
+                        .read<MainBloc>()
+                        .add(SetGameType(type: 'Online-FPS'));
+                    Navigator.pushReplacementNamed(context, '/gameSelect');
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff57CC99)),
+                  child: const Text(
+                    'Online-FPS',
+                    style: TextStyle(
+                        color: Color(0xff994900),
+                        letterSpacing: 3,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                ),
+                const SizedBox(
+                  height: 40.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context
+                        .read<MainBloc>()
+                        .add(GetGamesByType(type: 'Offline-FPS'));
 
-                context.read<MainBloc>().add(SetGameType(type: 'Offline-FPS'));
+                    context
+                        .read<MainBloc>()
+                        .add(SetGameType(type: 'Offline-FPS'));
 
-                Navigator.pushReplacementNamed(context, '/gameSelect');
-              },
-              child: const Text(
-                'Offline-FPS',
-                style: TextStyle(color: Colors.black),
-              ),
+                    Navigator.pushReplacementNamed(context, '/gameSelect');
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff57CC99)),
+                  child: const Text(
+                    'Offline-FPS',
+                    style: TextStyle(
+                        color: Color(0xff994900),
+                        letterSpacing: 3,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-    ));
+          ),
+        ));
   }
 }
