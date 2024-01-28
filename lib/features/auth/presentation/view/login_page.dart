@@ -101,61 +101,75 @@ class _LoginGeneralState extends State<LoginGeneral> {
     return Scaffold(
       backgroundColor: const Color(0xffDDF5EB),
       body: BlocListener<LoginSignupBloc, LoginSignupState>(
-        listener: (context, state) {
-          // print(state.loginState);
-          if (state.loginState == LoggedState.loggedin) {
-            // print('hello');
-            if (state.user!.games!.isNotEmpty) {
-              context.read<MainBloc>().add(GetUser(user: state.user!));
+          listener: (context, state) {
+            // print(state.loginState);
+            if (state.loginState == LoggedState.loggedin) {
+              // print('hello');
+              if (state.user!.games!.isNotEmpty) {
+                context.read<MainBloc>().add(GetUser(user: state.user!));
 
-              Navigator.pushNamedAndRemoveUntil(
-                  context, '/dashboard', (route) => false);
-            } else {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, '/gameTypeSelect', (route) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/dashboard', (route) => false);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/gameTypeSelect', (route) => false);
+              }
             }
-          }
-          // if (state.loginState == LoggedState.loggedin) {
-          //   Navigator.pushNamedAndRemoveUntil(
-          //       context, '/dashboard', (route) => false);
-          // }
-        },
-        child: SafeArea(
-            child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            decoration: const BoxDecoration(
-                color: Color(0xff79D6AD),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35))),
-            height: 400,
-            child: Form(
-              key: _formLogin,
-              child: Container(
-                // alignment: Alignment.center,
-                margin: const EdgeInsets.only(top: 55, left: 10, right: 10),
-                // height: fieldsHeight,
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // _buildFullNameField(),
-                      _buildUserNameField(),
-                      gap,
-                      _buildPasswordField(),
-                      gap,
-                      _buildSubmitButton(),
-                      gap,
-                      _buildSignupButton(),
-                    ],
+            // if (state.loginState == LoggedState.loggedin) {
+            //   Navigator.pushNamedAndRemoveUntil(
+            //       context, '/dashboard', (route) => false);
+            // }
+          },
+          child: SafeArea(
+            child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      "assets/images/game_buddy.png",
+                      height: 200,
+                      width: 200,
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ),
-        )),
-      ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                          color: Color(0xff79D6AD),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(35),
+                              topRight: Radius.circular(35))),
+                      height: 400,
+                      child: Form(
+                        key: _formLogin,
+                        child: Container(
+                          // alignment: Alignment.center,
+                          margin: const EdgeInsets.only(
+                              top: 55, left: 10, right: 10),
+                          // height: fieldsHeight,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                // _buildFullNameField(),
+                                _buildUserNameField(),
+                                gap,
+                                _buildPasswordField(),
+                                gap,
+                                _buildSubmitButton(),
+                                gap,
+                                _buildSignupButton(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ]),
+          )),
     );
   }
 }

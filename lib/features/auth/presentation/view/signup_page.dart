@@ -137,43 +137,56 @@ class _SignupGeneralState extends State<SignupGeneral> {
           }
         },
         child: SafeArea(
-          child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: Color(0xff79D6AD),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35),
-                        topRight: Radius.circular(35))),
-                height: 500,
-                child: Form(
-                  key: _formLogin,
-                  child: SingleChildScrollView(
-                    child: Container(
-                      // alignment: Alignment.center,
-                      margin:
-                          const EdgeInsets.only(top: 55, left: 10, right: 10),
-                      // height: fieldsHeight,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          // _buildFullNameField(),
-                          _buildFullNameField(),
-                          gap,
-                          _buildUsernameField(),
-                          gap,
-                          _buildPasswordField(),
-                          gap,
-                          _buildSubmitButton(),
-                          gap,
-                          _buildLoginButton(),
-                        ],
+            child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Image.asset(
+                "assets/images/game_buddy.png",
+                height: 200,
+                width: 200,
+              ),
+            ),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: Color(0xff79D6AD),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(35),
+                          topRight: Radius.circular(35))),
+                  height: 500,
+                  child: Form(
+                    key: _formLogin,
+                    child: SingleChildScrollView(
+                      child: Container(
+                        // alignment: Alignment.center,
+                        margin:
+                            const EdgeInsets.only(top: 55, left: 10, right: 10),
+                        // height: fieldsHeight,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            // _buildFullNameField(),
+                            _buildFullNameField(),
+                            gap,
+                            _buildUsernameField(),
+                            gap,
+                            _buildPasswordField(),
+                            gap,
+                            _buildSubmitButton(),
+                            gap,
+                            _buildLoginButton(),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              )),
-        ),
+                ))
+          ],
+        )),
       ),
     );
   }
